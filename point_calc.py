@@ -19,27 +19,23 @@ def team_size_pts(size):
 
 def circ_pts(circ_pct):
     """
-    I'm assuming here that the percentage is inputed as a string with a
-    percent sign, e.g. traffic_pct = '38%'. Percent sign is stripped then 
-    string converted to float. I'll change this if necessary
     
-    Param: circ_pct | type: str
+    Param: circ_pct | type: float
     return type: int
     """
-    pct = float(circ_pct.strip('%'))
-    if pct < 20:
+    if circ_pct < 0.2:
         return 0
-    elif  20 <= pct < 30:
+    elif  0.2 <= circ_pct < 0.3:
         return 5
-    elif 30 <= pct < 40:
+    elif 0.3 <= circ_pct < 0.4:
         return 6
-    elif 40 <= pct < 50:
+    elif 0.4 <= circ_pct < 0.5:
         return 7
-    elif 50 <= pct < 60:
+    elif 0.5 <= circ_pct < 0.6:
         return 8
-    elif 60 <= pct < 70:
+    elif 0.6 <= circ_pct < 0.7:
         return 9
-    elif 70 <= pct < 80:
+    elif 0.7 <= circ_pct < 0.8:
         return 10
     else:
         return 15
