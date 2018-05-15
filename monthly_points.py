@@ -77,7 +77,7 @@ if __name__ == '__main__':
             # checks if first cell in each column is blank
             if not campuses.cell_value(i, 0) == '':
                 chapter = campuses.row_values(i)[0]
-                team = team_size_pts(campuses.row_values(i)[18])
+                team = team_size_pts(int(campuses.row_values(i)[18]))
                 social_circ = circ_pts(campuses.row_values(i)[64])
                 traffic_circ = circ_pts(campuses.row_values(i)[68])
                 total = team + social_circ + traffic_circ
