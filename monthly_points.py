@@ -59,15 +59,18 @@ if __name__ == '__main__':
     campuses = workbook.sheet_by_index(3)
 
     # opens/truncates points.csv file
-    with open('points.csv', 'w', newline='\n') as csvfile:
-        csv_writer = csv.writer(csvfile, delimiter='\t')
+    with open('points.csv', 'w') as csvfile:
+        csv_writer = csv.writer(csvfile, delimiter='\t', lineterminator='\n')
         csv_writer.writerow(["Chapter", "Team Points", 
                              "Social Circ", "Traffic Circ", "Total Points"])
     
         for i in range(1, campuses.nrows):
-            chapter = campuses.row_values(i)[0]
-            team = team_size_pts(campuses.row_values(i)[18])
-            social_circ = circ_pts(campuses.row_values(i)[64])
-            traffic_circ = circ_pts(campuses.row_values(i)[68])
-            total = team + social_circ + traffic_circ
-            csv_writer.writerow([chapter, team, social_circ, traffic_circ, total])
+            if not campuses.cell_value(i, 0) == '':
+                chapter = campuses.row_values(i)[0]
+                team = team_size_pts(campuses.row_values(i)[18])
+                social_circ = circ_pts(campuses.row_values(i)[64])
+                traffic_circ = circ_pts(campuses.row_values(i)[68])
+                total = team + social_circ + traffic_circ
+                csv_writer.writerow([chapter, team, social_circ, traffic_circ, total])
+            else:
+                break
