@@ -1,12 +1,21 @@
 import xlrd
 import csv
 
+"""
+This is a utility script for Her Campus staff. 
+It is designed to calulate the monthly points for team size,
+social circulation, and traffic circulation. 
+After calculating points, the script will write the totals
+to a .csv file
+"""
+
 
 def team_size_pts(size):
     """
     Param: size | type: int
     Return-type: int
-    Takes team size as parameter, returns corresponding point value as an int
+    Takes team size as parameter as extracted from spreadsheet, 
+    returns corresponding point value as an int
     """
     try:
         if size < 10:
@@ -65,6 +74,7 @@ if __name__ == '__main__':
                              "Social Circ", "Traffic Circ", "Total Points"])
     
         for i in range(1, campuses.nrows):
+            # checks if first cell in each column is blank
             if not campuses.cell_value(i, 0) == '':
                 chapter = campuses.row_values(i)[0]
                 team = team_size_pts(campuses.row_values(i)[18])
